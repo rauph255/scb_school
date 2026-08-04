@@ -1,0 +1,50 @@
+{
+  "project": "St. Charles Borromeo Pre & Primary School UI/UX prototype",
+  "start": "prototype-map.html",
+  "logo": "assets/images/logo-original.jpg",
+  "sampled_colors": [
+    "#3D2D3F",
+    "#B8101E",
+    "#DAAD18",
+    "#E4CD5A",
+    "#F8F5EC"
+  ],
+  "public_pages": [
+    "admissions.html",
+    "faq.html",
+    "events.html",
+    "news.html",
+    "event-detail.html",
+    "prototype-map.html",
+    "about.html",
+    "gallery.html",
+    "contact.html",
+    "news-detail.html",
+    "downloads.html",
+    "privacy.html",
+    "academics.html",
+    "index.html"
+  ],
+  "admin_pages": [
+    "admissions.html",
+    "events.html",
+    "news-editor.html",
+    "login.html",
+    "users.html",
+    "settings.html",
+    "pages.html",
+    "news.html",
+    "contact-messages.html",
+    "media.html",
+    "page-editor.html",
+    "staff.html",
+    "gallery.html",
+    "event-editor.html",
+    "downloads.html",
+    "dashboard.html",
+    "roles.html",
+    "audit-log.html",
+    "programmes.html",
+    "gallery-editor.html"
+  ]
+}
