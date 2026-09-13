@@ -1,0 +1,5 @@
+@extends('errors.layout')
+@section('title', 'Session expired')
+@section('code', '419')
+@section('heading', 'Your session expired')
+@section('message', 'For your security, this form session has ended. Return to the previous page, refresh it and submit the form again.')

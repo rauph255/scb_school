@@ -1,0 +1,5 @@
+@extends('errors.layout')
+@section('title', 'Temporarily unavailable')
+@section('code', '503')
+@section('heading', 'We will be back shortly')
+@section('message', 'The school website is temporarily unavailable while essential work is completed. Please try again soon.')

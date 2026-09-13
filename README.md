@@ -1,30 +1,43 @@
 # St. Charles Borromeo Website
 
-Laravel implementation workspace for the St. Charles Borromeo Pre & Primary School public website and administration panel.
+Production-oriented Laravel 12 and Filament 5 implementation for the St. Charles Borromeo Pre & Primary School public website, administration experience, and staff portal.
 
-## Current Build State
+## Build state
 
-- The approved UI/UX prototype ZIP is extracted to `reference/scb_uiux_prototype/`.
-- Prototype hash verified: `45a8095cfb10247092535cc3f79a84ad6343d321e3a09c2add1a9652fcfab3e4`.
-- Immutable school logo hash verified: `2ba8c080a722aee70747ffce99097ae59596d351649bc8b75e8cac973e422c5b`.
-- Public and admin prototype screens are served through Laravel routes as the current visual baseline.
-- The supplied school JPG images are copied to `public/assets/images/school/`.
-- Falconode credit assets are copied to `public/assets/images/brand/` and shown cleanly in the public/admin footer areas.
-- Active configuration now defaults to MySQL, database sessions, database cache, and database queues.
-- Phase 0B database documentation is complete in `docs/`.
-- Phase 0C foundation code is present: migrations, Eloquent models, factories, deterministic seed data, destructive-command guard, and MySQL-focused tests.
+- PHP `^8.2`, Laravel `12.64.0`, Filament `5.7.5`, Tailwind CSS 4, and Vite are locked in `composer.lock` and `package-lock.json`.
+- MySQL 8 is the only runtime and test database. Sessions, cache, and queues use MySQL-backed database drivers.
+- Public pages, the visible `/admin` experience, `/admin-core` Filament resources, and the staff portal use Eloquent records rather than runtime fixtures.
+- Public media and downloads are streamed through authorization-aware routes; managed binaries are private and MySQL visibility, consent, and safeguarding state control access.
+- Public forms persist to MySQL, are rate-limited and honeypot-protected, and queue non-sensitive administrator notifications.
+- Administrator and staff authentication include role enforcement, CSRF-protected logout, throttling, and token-based password reset.
+- Development seed accounts are blocked when `APP_ENV` is not `local` or `testing`.
+- The approved administration screens are production resources under `resources/admin-experience/`; runtime code no longer reads from the design-reference directory.
+- The immutable logo SHA-256 remains `2ba8c080a722aee70747ffce99097ae59596d351649bc8b75e8cac973e422c5b`.
 
-## Local Commands
+## Requirements
+
+- PHP 8.2 or newer with `curl`, `dom`, `fileinfo`, `gd`, `mbstring`, `pdo_mysql`, `xmlwriter`, and `zip`
+- MySQL 8.0+ using InnoDB and `utf8mb4`
+- Composer 2
+- Node.js 20+ and npm
+- A queue worker and scheduler process in production
+
+## Local setup
 
 ```bash
 composer install
-npm install
-php artisan test
+npm ci
+cp .env.example .env
+php artisan key:generate
+php artisan migrate:fresh --seed
 npm run build
-php artisan serve
+php artisan test
+composer run dev
 ```
 
-The required local database settings are:
+The development command starts PHP with `upload_max_filesize=21M` and `post_max_size=25M`, supporting the application's 10 MB image/media limit and 20 MB document limit. Restart the development server after changing PHP upload settings.
+
+The local MySQL contract is:
 
 ```dotenv
 DB_CONNECTION=mysql
@@ -40,39 +53,39 @@ CACHE_STORE=database
 QUEUE_CONNECTION=database
 ```
 
-Open the public site after MySQL schemas and migrations exist:
+Tests must use the separate `scb_school_test` schema. The test harness refuses a second concurrent destructive suite and fails, rather than skips, when MySQL is unavailable.
+
+Local-only seeded access:
 
 ```text
-http://127.0.0.1:8000
+Admin: local.admin@example.test / ChangeMeLocalOnly!
+Staff: local.teacher@example.test / ChangeMeLocalOnly!
 ```
 
-Open the current admin UI baseline at:
+These representative accounts cannot be seeded in production.
 
-```text
-http://127.0.0.1:8000/admin
-```
+## Application entry points
 
-## Important Constraints
+- Public website: `/`
+- Administration: `/admin`
+- Internal Filament panel: `/admin-core`
+- Staff portal: `/staff-portal/login`
+- Health check: `/up`
 
-- Do not edit `assets/logo-original.jpg`, `resources/reference/logo-original.jpg`, or `public/assets/images/brand/scb-logo-original.jpg`.
-- The Falconode cropped credit image is a derived display asset only; the supplied original remains at `public/assets/images/brand/falconode-original.png`.
-- The current `/admin` screens are static UI baseline screens, not authenticated Filament resources yet.
-- The current prototype bridge is not the final database-backed implementation. The next milestone is verifying the existing MySQL migrations/seeders against real `scb_school` and `scb_school_test` schemas, then replacing prototype rendering with Eloquent-backed Blade/Filament screens.
-- MySQL admin credentials or pre-created schemas are needed before `php artisan migrate:fresh --seed` and the MySQL-dependent tests can fully run locally.
-- This checkout has an empty `.git` directory, so commits cannot be created until Git metadata is restored.
+## Production
+
+Use `.env.production.example` as the deployment checklist, supply secrets outside Git, configure HTTPS, run queue workers and the scheduler, and follow `docs/production-deployment.md`. Do not run the representative `DatabaseSeeder` in production.
 
 ## Documentation
 
-- Project contract: `AGENTS.md`
-- MySQL amendment: `PRD_MYSQL_AMENDMENT.md`
-- Database source design: `DATABASE_DESIGN.md`
-- Product requirements: `PRD.md`
 - Database design: `docs/database-design.md`
 - ERD: `docs/erd.md`
 - Data dictionary: `docs/data-dictionary.md`
-- MySQL index plan: `docs/mysql-index-plan.md`
+- Index plan: `docs/mysql-index-plan.md`
 - Migration order: `docs/migration-order.md`
 - Seed plan: `docs/seed-plan.md`
 - Reference inventory: `docs/reference-inventory.md`
+- Production deployment: `docs/production-deployment.md`
+- Production readiness evidence: `docs/production-readiness-report.md`
+- Design parity status: `docs/design-parity-report.md`
 - Build log: `docs/build-log.md`
-- Decisions: `docs/decisions/`

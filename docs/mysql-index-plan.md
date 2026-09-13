@@ -56,11 +56,14 @@
 | Published downloads | `downloads(status, published_at)` |
 | Downloads by category | `downloads(download_category_id, status, publication_date)` |
 | Published FAQs | `faqs(status, published_at)` |
+| Verified FAQs | `faqs(verified_at)` combined with the publication scope |
 | FAQs by category | `faqs(faq_category_id, status, sort_order)` |
 | Enquiry workflow | `admission_enquiries(status, created_at)`, `contact_messages(status, created_at)` |
 | Assigned enquiries | `admission_enquiries(assigned_to, status, created_at)`, `contact_messages(assigned_to, status, created_at)` |
 | Audit log by subject | `audit_logs(subject_type, subject_id, created_at)` |
 | Audit log by actor | `audit_logs(actor_id, created_at)` |
+| Reply history | `email_replies(replyable_type, replyable_id, created_at)` |
+| Queued reply delivery | `email_replies(status, queued_at)` |
 
 ## Full-Text Index Candidates
 

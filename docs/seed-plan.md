@@ -34,7 +34,7 @@ Seeders populate MySQL with development records. The runtime application must qu
 | Header navigation and footer links | `MenuSeeder` | `menus`, `menu_items`, `pages` |
 | Logo and supplied images | `MediaSeeder` | `media`, `media_variants` |
 | Home/about/admissions/static page content | `PageSeeder` | `pages`, `page_blocks`, `media_usages` |
-| News cards and detail | `EditorialSeeder` | `post_categories`, `posts`, `tags`, `post_tag` |
+| News cards, detail and article imagery | `EditorialSeeder` | `post_categories`, `posts`, `tags`, `post_tag`, `media_usages` |
 | Events listing/detail | `EventSeeder` | `event_categories`, `events` |
 | Academics and staff sections | `SchoolInformationSeeder` | `departments`, `programmes`, `staff_members` |
 | Gallery grid | `GallerySeeder` | `gallery_categories`, `galleries`, `gallery_items` |
@@ -47,7 +47,9 @@ Seeders populate MySQL with development records. The runtime application must qu
 - A primary menu exists and has active items.
 - Footer menus exist for school, resources, and legal links.
 - A protected school logo media record exists with the required checksum.
+- The selected graduation media has WebP masters, three responsive variants per image, confirmed owner-supplied consent where required, and private-storage files matching its MySQL metadata.
 - At least one public page exists for every public route.
 - Home page blocks cover hero, welcome, feature cards, latest news, upcoming events, and call to action.
-- News, events, programmes, galleries, downloads, and FAQs have published records.
+- News, events, programmes, galleries, downloads, and authorised verified FAQs have published records.
+- The 2026 graduation story references the event date, venue and guest of honour supplied by the owner; its five supporting article images and six-item gallery are connected through MySQL media usage records.
 - Private/internal enquiry notes are present only in local/testing seed data.

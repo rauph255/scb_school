@@ -214,4 +214,16 @@ return [
 
     'partitioned' => env('SESSION_PARTITIONED_COOKIE', false),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Session Serialization
+    |--------------------------------------------------------------------------
+    |
+    | JSON prevents PHP object deserialization in session payloads. Deploying
+    | this setting invalidates any legacy PHP-serialized sessions.
+    |
+    */
+
+    'serialization' => 'json',
+
 ];

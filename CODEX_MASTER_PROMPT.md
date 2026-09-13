@@ -23,7 +23,7 @@ The MySQL amendment overrides earlier wording that permitted PostgreSQL, SQLite,
 Create a production-ready Laravel and Filament application that:
 
 - accurately reproduces the approved public and admin UI/UX;
-- uses Laravel 13.x, PHP 8.3+, Filament 5.x, Blade, Livewire where necessary, Alpine.js, Tailwind CSS 4.x, and Vite;
+- uses Laravel 12.x, PHP 8.2+, Filament 5.x, Blade, Livewire where necessary, Alpine.js, Tailwind CSS 4.x, and Vite;
 - uses **MySQL 8.0+ as the only relational database**;
 - retrieves every operational public and admin record from MySQL;
 - protects children’s media and private enquiries;

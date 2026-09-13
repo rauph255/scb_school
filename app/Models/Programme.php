@@ -27,4 +27,9 @@ class Programme extends Model
     {
         return $this->belongsTo(Department::class);
     }
+
+    public function featuredMedia(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'featured_media_id');
+    }
 }

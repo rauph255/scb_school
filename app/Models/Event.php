@@ -31,4 +31,14 @@ class Event extends Model
     {
         return $this->belongsTo(EventCategory::class, 'event_category_id');
     }
+
+    public function featuredMedia(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'featured_media_id');
+    }
+
+    public function programmeDownload(): BelongsTo
+    {
+        return $this->belongsTo(Download::class, 'programme_download_id');
+    }
 }

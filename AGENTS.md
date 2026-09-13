@@ -21,8 +21,8 @@ The prototype controls visual output. The requirements documents control behavio
 
 Use:
 
-- PHP 8.3+
-- Laravel 13.x
+- PHP 8.2+
+- Laravel 12.x
 - Filament 5.x
 - Blade
 - Livewire only where interaction requires it

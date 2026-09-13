@@ -1,0 +1,5 @@
+@extends('errors.layout')
+@section('title', 'Upload too large')
+@section('code', '413')
+@section('heading', 'That file is too large')
+@section('message', 'Choose an image no larger than 10 MB or a document no larger than 20 MB, then try the upload again.')

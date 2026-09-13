@@ -44,6 +44,7 @@ erDiagram
     MEDIA ||--o{ DOWNLOADS : file
 
     FAQ_CATEGORIES ||--o{ FAQS : contains
+    USERS ||--o{ FAQS : verifies
 
     USERS ||--o{ ADMISSION_ENQUIRIES : assigned
     ADMISSION_ENQUIRIES ||--o{ ADMISSION_ENQUIRY_NOTES : has
@@ -52,6 +53,10 @@ erDiagram
     USERS ||--o{ CONTACT_MESSAGES : assigned
     CONTACT_MESSAGES ||--o{ CONTACT_MESSAGE_NOTES : has
     USERS ||--o{ CONTACT_MESSAGE_NOTES : writes
+
+    ADMISSION_ENQUIRIES ||--o{ EMAIL_REPLIES : receives
+    CONTACT_MESSAGES ||--o{ EMAIL_REPLIES : receives
+    USERS ||--o{ EMAIL_REPLIES : sends
 
     USERS ||--o{ AUDIT_LOGS : acts
 ```

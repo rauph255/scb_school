@@ -1,6 +1,6 @@
 # Reference Inventory
 
-Date: 2026-08-03
+Last verified: 2026-08-21
 
 ## Verified Inputs
 
@@ -14,55 +14,59 @@ Date: 2026-08-03
 
 | Reference screen | Current Laravel route | Future implementation target |
 |---|---|---|
-| `index.html` | `/` | Blade home page with reusable public components |
-| `about.html` | `/about` | Blade about page |
-| `academics.html` | `/academics` | Blade academics/programmes page |
-| `admissions.html` | `/admissions` | Blade admissions page and enquiry workflow |
-| `news.html` | `/news` | News listing with search/filter/pagination |
-| `news-detail.html` | `/news/young-learners-shine` | News detail template |
-| `events.html` | `/events` | Event listing with upcoming/past filters |
-| `event-detail.html` | `/events/parent-orientation` | Event detail template |
-| `gallery.html` | `/gallery` | Gallery grid and accessible lightbox |
-| `downloads.html` | `/downloads` | Downloads listing |
-| `contact.html` | `/contact` | Contact details and contact form |
-| `faq.html` | `/faq` | FAQ accordions |
-| `privacy.html` | `/privacy` | Privacy and safeguarding page |
-| `admin/login.html` | `/admin` | Filament branded login |
-| `admin/dashboard.html` | `/admin/dashboard` | Filament dashboard widgets |
-| `admin/pages.html` | `/admin/pages` | Filament Pages resource |
-| `admin/page-editor.html` | `/admin/pages/editor` | Controlled page block editor |
-| `admin/news.html` | `/admin/news` | Filament News resource |
-| `admin/news-editor.html` | `/admin/news/editor` | News editor |
-| `admin/events.html` | `/admin/events` | Filament Events resource |
-| `admin/event-editor.html` | `/admin/events/editor` | Event editor |
-| `admin/gallery.html` | `/admin/gallery` | Filament Gallery resource |
-| `admin/gallery-editor.html` | `/admin/gallery/editor` | Gallery editor |
-| `admin/downloads.html` | `/admin/downloads` | Filament Downloads resource |
-| `admin/staff.html` | `/admin/staff` | Filament Staff resource |
-| `admin/programmes.html` | `/admin/programmes` | Filament Programmes resource |
-| `admin/admissions.html` | `/admin/admissions` | Admission enquiries resource |
-| `admin/contact-messages.html` | `/admin/contact-messages` | Contact messages resource |
-| `admin/media.html` | `/admin/media` | Media library |
-| `admin/users.html` | `/admin/users` | Users resource |
-| `admin/roles.html` | `/admin/roles` | Roles and permissions |
-| `admin/settings.html` | `/admin/settings` | Site settings |
-| `admin/audit-log.html` | `/admin/audit-log` | Audit log |
+| `index.html` | `/` | Implemented Blade home page with reusable public layout and MySQL-backed Eloquent data |
+| `about.html` | `/about` | Implemented Blade about page with MySQL page blocks and staff |
+| `academics.html` | `/academics` | Implemented Blade academics page with MySQL page blocks and programmes |
+| `admissions.html` | `/admissions` | Implemented Blade admissions page and persisted MySQL enquiry workflow |
+| `news.html` | `/news` | Implemented Blade news listing with published MySQL posts |
+| `news-detail.html` | `/news/{post:slug}` | Implemented Blade news detail with published MySQL post lookup |
+| `events.html` | `/events` | Implemented Blade event listing with published MySQL events |
+| `event-detail.html` | `/events/{event:slug}` | Implemented Blade event detail with published MySQL event lookup |
+| `gallery.html` | `/gallery` | Implemented Blade gallery with published MySQL galleries and consent-filtered media |
+| `downloads.html` | `/downloads` | Implemented Blade downloads listing with published MySQL downloads |
+| `contact.html` | `/contact` | Implemented Blade contact details and persisted MySQL contact-message workflow |
+| `faq.html` | `/faq` | Implemented Blade FAQ accordions with published MySQL FAQ records |
+| `privacy.html` | `/privacy` | Implemented Blade privacy and safeguarding page with MySQL page blocks |
+| Staff portal login | `/staff-portal/login` | Implemented separate staff login UI with teacher-contributor authentication |
+| Staff portal dashboard | `/staff-portal` | Implemented separate protected staff dashboard UI with MySQL-backed events, downloads, news, and directory records |
+| `admin/login.html` | `/admin/login` | Implemented visible approved prototype login UI with administrator authentication |
+| `admin/dashboard.html` | `/admin`, `/admin/dashboard` | Implemented visible approved prototype dashboard UI |
+| `admin/pages.html` | `/admin/pages` | Implemented visible approved prototype Pages UI |
+| `admin/page-editor.html` | `/admin/pages/editor` | Implemented visible approved prototype page editor UI |
+| `admin/news.html` | `/admin/news` | Implemented visible approved prototype News UI |
+| `admin/news-editor.html` | `/admin/news/editor` | Implemented visible approved prototype news editor UI |
+| `admin/events.html` | `/admin/events` | Implemented visible approved prototype Events UI |
+| `admin/event-editor.html` | `/admin/events/editor` | Implemented visible approved prototype event editor UI |
+| `admin/gallery.html` | `/admin/gallery` | Implemented visible approved prototype Gallery UI |
+| `admin/gallery-editor.html` | `/admin/gallery/editor` | Implemented approved MySQL-backed gallery editor with metadata, order, cover, attach, detach, delete, and publication-safety controls |
+| `admin/downloads.html` | `/admin/downloads` | Implemented visible approved prototype Downloads UI |
+| `admin/staff.html` | `/admin/staff` | Implemented visible approved prototype Staff UI |
+| `admin/programmes.html` | `/admin/programmes` | Implemented visible approved prototype Programmes UI |
+| `admin/admissions.html` | `/admin/admissions`, `/admin/admissions/{id}` | Implemented approved Admissions list plus protected detail, assignment, notes, status, and export workflow |
+| `admin/contact-messages.html` | `/admin/contact-messages`, `/admin/contact-messages/{id}` | Implemented approved Contact Messages list plus protected detail, assignment, notes, status, and export workflow |
+| `admin/media.html` | `/admin/media` | Implemented preview-first media library with search, type/status/order filters, collapsed metadata and consent controls, document previews, and MySQL-backed publication actions |
+| `admin/users.html` | `/admin/users` | Implemented visible approved prototype Users UI |
+| `admin/roles.html` | `/admin/roles` | Implemented visible approved prototype Roles UI |
+| `admin/settings.html` | `/admin/settings` | Implemented visible approved prototype Settings UI |
+| `admin/audit-log.html` | `/admin/audit-log` | Implemented visible approved prototype Audit Log UI |
 
 ## Assets
 
 | Asset group | Source | Runtime location | Notes |
 |---|---|---|---|
-| Prototype CSS/JS/images | `reference/scb_uiux_prototype/assets/` | `public/assets/prototype/` | Served unchanged as the current visual baseline |
+| Approved administration CSS/JS | `reference/scb_uiux_prototype/assets/` | `public/assets/scb/` | Production CSS/JS bundle; school photographs and original-source images are not public |
+| Administration experience HTML | `reference/scb_uiux_prototype/admin/` | `resources/admin-experience/` | Production resources consumed by `AdminExperienceController`; runtime does not depend on `reference/` |
 | Immutable school logo | `assets/logo-original.jpg` | `resources/reference/logo-original.jpg`, `public/assets/images/brand/scb-logo-original.jpg` | Copied without recompression |
-| Supplied JPG photography | `/home/rauph/Downloads/scb_website_images_hd/scb_website_images/pictures/` | `public/assets/images/school/` | Preserved for the Laravel asset library and future media seeding |
-| Falconode original logo | `/home/rauph/Downloads/LOGO FALCONODE lite logo no background-02.png` | `public/assets/images/brand/falconode-original.png` | Preserved as supplied |
-| Falconode credit crop | `public/assets/images/brand/falconode-original.png` | `public/assets/images/brand/falconode-credit.png` | Derived display crop for small footer/admin credit |
+| Supplied JPG photography | `/home/rauph/Downloads/scb_website_images_hd/scb_website_images/pictures/` | `resources/reference/school/`, then private Laravel storage through MySQL media records | Seed source is not web-accessible; public delivery is authorization-aware |
+| 2026 graduation photography | Owner-shared Google Drive folder `1DT2cd4Qk7qO5cQ77ffrcTGZIUfs8KELW` | `resources/reference/school/2026/graduation/`, then private Laravel storage through MySQL media records | Six selected photographs; metadata-stripped WebP masters plus 480/960/1600 variants; provenance is recorded in `docs/decisions/2026-08-22-graduation-media-selection.md` |
+| Falconode visual assets | `/home/rauph/Downloads/LOGO FALCONODE lite logo no background-02.png` | Preserved legacy files under `public/assets/images/brand/` | Not rendered; every credit is text-only: “Powered by Falconode (T) Ltd” linking to `https://www.falconode.net` |
 
-## Current Gaps
+## Delivery State
 
-- Public and admin routes currently serve approved prototype HTML as a visual baseline. They must be replaced by MySQL-backed Blade/Filament screens after the Phase 0C schema and seeders are verified against MySQL.
-- The current admin routes render static prototype screens and are not yet protected by authentication.
-- Filament is not installed yet.
-- The project is currently Laravel 12.x, while the updated contract calls for Laravel 13.x.
-- Phase 0C migrations, models, factories, seeders, safety guard, and MySQL tests are present, but the clean MySQL migration/seed proof is blocked because local database administrator credentials or pre-created schemas are unavailable.
-- The `.git` directory is empty, so the required chunk commit cannot be created until repository metadata is restored.
+- All managed public pages render from MySQL-backed Blade and publication scopes.
+- The visible `/admin` experience is role-protected, uses production resource templates, and has MySQL-backed workflows for every listed resource.
+- The staff portal is intentionally separate under `/staff-portal` and requires the staff role.
+- Filament 5 is available at `/admin-core` as a protected, MySQL-backed administration panel.
+- The owner-approved compatibility target is PHP 8.2+, Laravel 12.64.0, Filament 5.7.5, and MySQL 8.
+- Phase 0C migrations, models, factories, seeders, safety guards, and MySQL tests are verified.
+- Formal browser screenshot comparison at the documented desktop/mobile widths remains a release-owner sign-off item; see `docs/design-parity-report.md`.

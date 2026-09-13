@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
@@ -36,6 +37,11 @@ class Post extends Model
         return $this->belongsTo(PostCategory::class, 'post_category_id');
     }
 
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
+
     public function featuredMedia(): BelongsTo
     {
         return $this->belongsTo(Media::class, 'featured_media_id');
@@ -44,5 +50,13 @@ class Post extends Model
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function articleMediaUsages(): HasMany
+    {
+        return $this->hasMany(MediaUsage::class, 'usable_id')
+            ->where('usable_type', self::class)
+            ->where('field_name', 'like', 'article_gallery:%')
+            ->orderBy('field_name');
     }
 }

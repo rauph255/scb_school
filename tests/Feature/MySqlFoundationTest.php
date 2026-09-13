@@ -15,7 +15,7 @@ class MySqlFoundationTest extends TestCase
 {
     public function test_mysql_connection_is_live_for_tests(): void
     {
-        $this->skipIfMySqlIsUnavailable();
+        $this->requireMySqlConnection();
 
         $this->assertSame('mysql', DB::connection()->getDriverName());
         $this->assertSame('scb_school_test', DB::connection()->getDatabaseName());

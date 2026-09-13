@@ -1,6 +1,7 @@
-# Prototype Served Through Laravel
+# Prototype Served Through Laravel — Superseded
 
-Date: 2026-08-03
+- Opened: 2026-08-03
+- Superseded: 2026-08-21
 
 ## Context
 
@@ -17,8 +18,9 @@ Serve the approved prototype screens through Laravel routes as an interim visual
 - It lets the supplied Falconode credit appear consistently across public and admin screens.
 - It avoids inventing a new design while the full Laravel/Filament implementation is still pending.
 
-## Consequences
+## Resolution
 
-- The current admin panel is not a real authenticated Filament panel yet.
-- The static prototype routes must be replaced screen by screen with Blade components and Filament resources.
-- Admin route protection is a high-priority next chunk before any real data is exposed through `/admin/*`.
+- Public prototype routes were replaced by MySQL-backed Blade controllers and views.
+- The administration experience is authenticated, authorized, and wired to MySQL-backed workflows.
+- Approved administration HTML was promoted to `resources/admin-experience/`; `AdminExperienceController` renders it with server-side records and forms. Runtime code no longer reads from `reference/`.
+- A protected MySQL-backed Filament panel is available at `/admin-core`.

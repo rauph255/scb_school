@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\NormalizesEmail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Department extends Model
 {
-    use SoftDeletes;
+    use NormalizesEmail, SoftDeletes;
 
     protected $fillable = ['name', 'slug', 'description', 'email', 'telephone', 'sort_order', 'is_active'];
 

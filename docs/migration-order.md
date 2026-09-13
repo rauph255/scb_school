@@ -43,7 +43,10 @@ Migrations must be created in this sequence so foreign keys can be applied inten
 38. `contact_message_notes`.
 39. `redirects`.
 40. `audit_logs`.
-41. Full-text indexes and late composite indexes that depend on all columns existing.
+41. Add enquiry view-state columns.
+42. Add FAQ verification columns and verifier relationship.
+43. `email_replies` after users and both enquiry tables exist.
+44. Full-text indexes and late composite indexes that depend on all columns existing.
 
 ## Validation Before Milestone 0C
 

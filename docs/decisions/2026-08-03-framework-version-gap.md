@@ -1,12 +1,13 @@
-# Framework Version Gap
+# Framework Version Contract — Owner-Approved Laravel 12 Target
 
-Date: 2026-08-03
+- Opened: 2026-08-03
+- Revised by owner: 2026-08-24
 
 ## Context
 
-The binding project documents require Laravel 13.x, PHP 8.3+, and Filament 5.x.
+The owner has approved PHP 8.2+, Laravel 12.x, Filament 5.x, and MySQL 8.0+ as the binding compatibility target for cPanel deployment.
 
-## Finding
+## Original Finding
 
 The current installed application is a Laravel 12 skeleton:
 
@@ -14,10 +15,14 @@ The current installed application is a Laravel 12 skeleton:
 - Filament is not installed.
 - The local PHP CLI reports PHP 8.2.31 for the dev server.
 
-## Decision
+## Current Resolution
 
-Do not pretend the version requirement is satisfied. Keep documenting and configuring the project toward the required MySQL-first architecture, then upgrade Laravel/PHP and install Filament in a dedicated compatibility chunk.
+The dependency contract targets PHP `^8.2`, Laravel `12.64.0`, Laravel Tinker `^2.10.1`, PHPUnit `^11.5.50`, and Filament `5.7.5`. Composer emulates PHP 8.2.31 while resolving dependencies so the lockfile cannot silently select PHP 8.3/8.4-only packages.
 
-## Impact
+Laravel 12's `ValidateCsrfToken` middleware protects the Filament panel and application forms. JSON session serialization and the restricted cache unserialization setting remain enabled.
 
-The current admin routes remain static prototype baseline screens. Real Filament resources, authentication, policies, and database-backed widgets remain pending.
+## Evidence
+
+- PHP 8.2.31 / Laravel 12.64.0 / Filament 5.7.5 is the required verification target.
+- Full MySQL suite: 63 tests and 1,190 assertions passed before the final runtime-resource promotion; the focused post-promotion suite also passed.
+- The deployment host must enable the PHP extensions listed in `docs/production-deployment.md`.

@@ -62,9 +62,10 @@ All tables use unsigned `BIGINT` primary keys, UTC timestamps, InnoDB, `utf8mb4`
 | Table | Key columns | Foreign keys | Delete rules |
 |---|---|---|---|
 | `faq_categories` | `name`, `slug` unique, `sort_order`, `is_active` | none | Restrict if used |
-| `faqs` | `question`, `answer`, `sort_order`, `status`, `published_at`, `deleted_at` | `faq_category_id`, `created_by`, `updated_by` | Optional references set null, soft delete |
+| `faqs` | `question`, `answer`, `sort_order`, `status`, `published_at`, `verified_at`, `verification_notes`, `deleted_at` | `faq_category_id`, `verified_by`, `created_by`, `updated_by` | Optional references set null, soft delete |
 | `admission_enquiries` | `reference_code` unique, `guardian_name`, `email`, `telephone`, `intended_level`, `intended_term`, `intended_year`, `preferred_contact_method`, `message`, `consent_confirmed`, `status`, `source_ip_hash`, `user_agent_hash`, `responded_at`, `closed_at`, `deleted_at` | `assigned_to` | Assignee set null, soft delete |
 | `admission_enquiry_notes` | `note`, `is_sensitive` | `admission_enquiry_id`, `user_id` | Enquiry cascade, user set null |
 | `contact_messages` | `reference_code` unique, `full_name`, `email`, `telephone`, `subject`, `message`, `consent_confirmed`, `status`, `source_ip_hash`, `user_agent_hash`, `responded_at`, `closed_at`, `deleted_at` | `assigned_to` | Assignee set null, soft delete |
 | `contact_message_notes` | `note`, `is_sensitive` | `contact_message_id`, `user_id` | Message cascade, user set null |
+| `email_replies` | `replyable_type`, `replyable_id`, `recipient_email`, `subject`, `body`, `status`, `queued_at`, `sent_at`, `failed_at`, `failure_type`, `request_id` | `user_id`; polymorphic admission/contact parent | Author set null; parent lifecycle handled by the application |
 | `audit_logs` | `actor_id`, `action`, `subject_type`, `subject_id`, `description`, `old_values`, `new_values`, `ip_address`, `user_agent`, `request_id`, `created_at` | `actor_id` | Actor set null, append-only |

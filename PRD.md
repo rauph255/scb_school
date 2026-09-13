@@ -74,8 +74,8 @@ All permissions must be enforced server-side through policies and gates.
 
 ## 6. Technical baseline
 
-- PHP 8.3+
-- Laravel 13.x
+- PHP 8.2+
+- Laravel 12.x
 - Filament 5.x
 - Blade templates
 - Livewire only where interaction requires it

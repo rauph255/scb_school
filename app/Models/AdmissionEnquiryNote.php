@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AdmissionEnquiryNote extends Model
 {
@@ -11,5 +12,10 @@ class AdmissionEnquiryNote extends Model
     protected function casts(): array
     {
         return ['is_sensitive' => 'boolean'];
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

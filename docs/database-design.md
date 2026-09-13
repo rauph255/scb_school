@@ -29,8 +29,8 @@ This document implements the binding direction in `PRD_MYSQL_AMENDMENT.md` and `
 | School information | `departments`, `programmes`, `staff_members` | Academics, programmes, leadership, staff |
 | Media and files | `media`, `media_variants`, `media_usages`, `download_categories`, `downloads` | Asset metadata, consent, public file access |
 | Galleries | `gallery_categories`, `galleries`, `gallery_items` | Public albums and ordered media |
-| FAQs | `faq_categories`, `faqs` | Categorized public FAQs |
-| Enquiries | `admission_enquiries`, `admission_enquiry_notes`, `contact_messages`, `contact_message_notes` | Private admissions/contact workflows |
+| FAQs | `faq_categories`, `faqs` | Categorized answers with authorised verification before publication |
+| Enquiries | `admission_enquiries`, `admission_enquiry_notes`, `contact_messages`, `contact_message_notes`, `email_replies` | Private admissions/contact workflows and tracked outbound replies |
 | Audit | `audit_logs` | Append-only privileged activity trail |
 
 ## Public Visibility Scopes
@@ -83,4 +83,4 @@ AND (consent_required = false OR consent_confirmed = true)
 ## Open Implementation Decisions
 
 - MySQL credentials are not yet available to create `scb_school` and `scb_school_test`.
-- Laravel 13.x and Filament 5.x are required by the product docs, but the current installed project is Laravel 12.x and Filament is not installed.
+- Laravel 12.x and Filament 5.x are required by the owner-approved product contract and are installed together.

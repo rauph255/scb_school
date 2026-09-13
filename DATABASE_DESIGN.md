@@ -4,7 +4,7 @@
 **Storage engine:** InnoDB  
 **Character set:** `utf8mb4`  
 **Recommended collation:** `utf8mb4_unicode_ci`  
-**Application:** Laravel 13.x and Filament 5.x  
+**Application:** Laravel 12.x and Filament 5.x
 **Status:** Binding initial design; Codex may refine it only through a documented decision that preserves all requirements.
 
 ---
